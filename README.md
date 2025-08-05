@@ -4,21 +4,6 @@ A deep learning-powered system for automated ECG interpretation and cardiovascul
 
 ---
 
-## 📋 Table of Contents
-- [About The Project](#-about-the-project)
-- [✨ Key Features](#-key-features)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [🚀 Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [🗃️ Database Setup](#️-database-setup)
-  - [MySQL Server Installation](#mysql-server-installation)
-  - [Database Schema Creation](#database-schema-creation)
-- [🏃 Usage](#-usage)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [📧 Contact](#-contact)
-
 ## 📖 About The Project
 
 Cardiovascular diseases (CVDs) are a leading global cause of death. Early and accurate diagnosis is critical for effective treatment. This project automates the complex task of ECG analysis using advanced deep learning models to assist medical professionals.
