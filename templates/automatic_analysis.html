@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Automatic Analysis - ECG Analysis{% endblock %}
+
+{% block content %}
+<style>
+    .patient-details {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h3 class="mb-0"><i class="fas fa-microchip"></i> AI ECG Analysis</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="patient-details mb-4">
+                            <h5>Patient Details</h5>
+                            <hr>
+                            <p><strong>Patient ID:</strong> {{ patient.Patient_ID }}</p>
+                            <p><strong>Name:</strong> {{ patient.Patient_Name }}</p>
+                            <p><strong>Age:</strong> {{ patient.Age }}</p>
+                            <p><strong>Gender:</strong> {{ patient.Gender }}</p>
+                            
+                            <p> <strong>Contact Info:</strong> {{ patient.Personal_Contact }}</p>
+                            
+                            <p><strong>Doctor ID:</strong> {{ patient.Doctor_ID }}</p>
+                            
+                            <p><strong>Timestamp:</strong> {{ patient.Created_At.strftime("%Y-%m-%d %H:%M:%S") }}</p>                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">Select ECG Record</label>
+                                <select name="record_num" class="form-select" required>
+                                    <option value="">Select a record...</option>
+                                    {% for record in ['100', '101', '102', '103', '104', '105', '106', '107'] %}
+                                    <option value="{{ record }}">Record {{ record }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <h5 class="mt-4">Patient Information</h5>
+                            <hr>
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Age (years)</label>
+                                    <input type="number" class="form-control" name="age" min="18" max="120" value="{{ patient.Age }}" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Systolic BP (mmHg)</label>
+                                    <input type="number" class="form-control" name="systolic_bp" min="50" max="250" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Cholesterol (mg/dL)</label>
+                                    <input type="number" class="form-control" name="cholesterol" min="50" max="500" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">HDL (mg/dL)</label>
+                                    <input type="number" class="form-control" name="hdl" min="20" max="100" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="smoker">
+                                        <label class="form-check-label">
+                                            <i class="fas fa-smoking"></i> Current Smoker
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="diabetes">
+                                        <label class="form-check-label">
+                                            <i class="fas fa-diabetes"></i> Diabetes Diagnosis
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100 mt-4">
+                                <span class="spinner-border spinner-border-sm d-none"></span>
+                                <i class="fas fa-arrow-right"></i> Analyze ECG
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
